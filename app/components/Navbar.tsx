@@ -18,6 +18,13 @@ const Navbar = () => {
     }
   }
 
+  const navItems = [
+    { href: '#top', label: 'Home' },
+    { href: '#about', label: 'Journey' },
+    { href: '#skills', label: 'Skills' },
+    { href: '#builds', label: 'Builds' }
+  ];
+
   return (
     <>
       <div className='fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%]'>
@@ -32,29 +39,23 @@ const Navbar = () => {
           />
         </a>
 
-        
-
-        <ul className='hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 bg-white shadow-sm bg-opacity-50'>
-          <li>
-            <a className='font-Ovo' href='#top'>
-              Home
+        {/* Desktop Navigation */}
+        <ul className='hidden md:flex items-center gap-2 lg:gap-4 rounded-full px-8 py-3 backdrop-blur-xl bg-white/20 shadow-xl border border-white/30 hover:bg-white/30 transition-all duration-300'>
+          {navItems.map((item,) => (
+            <li key={item.href} className="relative group">
+              <a 
+                className='font-Ovo px-4 py-2 rounded-full transition-all duration-300 hover:bg-white/40 hover:text-pink-400 hover:scale-105 hover:shadow-md relative overflow-hidden'
+                href={item.href}
+              >
+                {item.label}
+                {/* Animated underline */}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
+                
+                {/* Hover glow effect */}
+                <span className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/0 to-purple-400/0 group-hover:from-blue-400/10 group-hover:to-purple-400/10 transition-all duration-300"></span>
             </a>
           </li>
-          <li>
-            <a className='font-Ovo' href='#about'>
-              Journey
-            </a>
-          </li>
-          <li>
-            <a className='font-Ovo' href='#skills'>
-              Skills
-            </a>
-          </li>
-          <li>
-            <a className='font-Ovo' href='#builds'>
-              Builds
-            </a>
-          </li>
+          ))}
         </ul>
 
         <div className='flex items-center gap-4'>
